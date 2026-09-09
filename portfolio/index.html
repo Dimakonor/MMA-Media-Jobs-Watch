@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combat Sports Content Producer — Backstage · Viral · EN/RU/ZH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0b;
+    --ink-2:#121215;
+    --line:#26262c;
+    --paper:#f2f0ec;
+    --mute:#8b8b96;
+    --blood:#d92121;
+    --gold:#e8b53a;
+    --gut: clamp(1.5rem, 6vw, 7rem);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+  .display{font-family:'Anton',Impact,sans-serif;text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;font-size:.72rem;color:var(--mute)}
+
+  /* HERO */
+  header{
+    padding:clamp(3.5rem,9vw,7rem) 0 clamp(2.5rem,6vw,4.5rem);
+    border-bottom:1px solid var(--line);
+    position:relative;overflow:hidden;
+  }
+  header::after{
+    content:"";position:absolute;inset:auto -10% -60% 40%;
+    height:120%;background:radial-gradient(ellipse at center,rgba(217,33,33,.22),transparent 62%);
+    pointer-events:none;
+  }
+  .eyebrow{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;margin-bottom:1.8rem;position:relative;z-index:1}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+    border:1px solid var(--line);padding:.36rem .7rem;border-radius:99px;color:var(--paper);
+  }
+  .tag.hot{border-color:var(--blood);color:#ff6b6b}
+  h1{font-size:clamp(2.6rem,8.4vw,6.2rem);position:relative;z-index:1}
+  h1 em{font-style:normal;color:var(--blood)}
+  .sub{
+    margin-top:1.6rem;max-width:46ch;font-size:clamp(1.02rem,1.9vw,1.28rem);
+    color:#cfcfd6;position:relative;z-index:1;
+  }
+
+  /* NUMBERS */
+  .numbers{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    border-top:1px solid var(--line);
+  }
+  .num{padding:clamp(1.6rem,3.5vw,2.6rem) 0;border-right:1px solid var(--line)}
+  .num:last-child{border-right:none}
+  .num .v{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,5.6vw,4rem);line-height:1;letter-spacing:-.02em}
+  .num .v.red{color:var(--blood)}
+  .num .k{margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  @media(max-width:720px){.num{border-right:none;border-bottom:1px solid var(--line);padding-left:0}}
+
+  section{padding:clamp(3.2rem,7vw,5.5rem) 0;border-bottom:1px solid var(--line)}
+  .label{margin-bottom:2rem}
+  h2{font-size:clamp(1.7rem,4vw,2.8rem);margin-bottom:1.1rem}
+
+  /* WORK */
+  .work{display:grid;gap:0}
+  .row{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:baseline;
+    padding:1.4rem 0;border-top:1px solid var(--line);
+  }
+  .row:last-child{border-bottom:1px solid var(--line)}
+  .row .t{font-size:clamp(1.05rem,2.2vw,1.4rem);font-weight:600}
+  .row .m{display:block;margin-top:.3rem;font-size:.85rem;color:var(--mute)}
+  .row .n{font-family:'Anton',sans-serif;font-size:clamp(1.5rem,3.6vw,2.4rem);color:var(--gold);white-space:nowrap}
+
+  /* ACCESS */
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+  .chip{
+    border:1px solid var(--line);background:var(--ink-2);padding:.5rem .9rem;border-radius:4px;
+    font-size:.9rem;font-weight:500;
+  }
+
+  /* OFFER */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .card{background:var(--ink);padding:clamp(1.4rem,3vw,2.1rem)}
+  .card h3{font-size:1.05rem;margin-bottom:.6rem;font-weight:700}
+  .card p{font-size:.94rem;color:#b9b9c2}
+  .card .lead{color:var(--blood);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.9rem}
+
+  /* LANGUAGES */
+  .langs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.6rem;margin-top:1.4rem}
+  .lang .code{font-family:'Anton',sans-serif;font-size:2.4rem;color:var(--paper)}
+  .lang .desc{font-size:.92rem;color:var(--mute);margin-top:.2rem}
+
+  /* STACK */
+  .stack{font-size:1.02rem;color:#b9b9c2;max-width:60ch}
+  .stack strong{color:var(--paper);font-weight:600}
+
+  /* CONTACT */
+  footer{padding:clamp(3.2rem,7vw,5.5rem) 0 clamp(4rem,8vw,6rem)}
+  .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+  .btn{
+    display:inline-block;padding:.85rem 1.5rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:.95rem;
+    border:1px solid var(--line);color:var(--paper);transition:.15s;
+  }
+  .btn:hover{border-color:var(--paper)}
+  .btn.primary{background:var(--blood);border-color:var(--blood);color:#fff}
+  .btn.primary:hover{background:#b81a1a;border-color:#b81a1a}
+  .fine{margin-top:2.5rem;font-size:.8rem;color:#5c5c66;max-width:60ch}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">
+      <span class="tag hot">Available for contract / remote</span>
+      <span class="tag">Combat sports</span>
+      <span class="tag">EN · RU · 中文</span>
+    </div>
+    <h1 class="display">Backstage with<br>the fighters<br><em>60M+ views deep</em></h1>
+    <p class="sub">
+      Content producer for combat sports. I shoot and cut what happens before the walkout —
+      and I have the numbers to prove that audiences want it.
+    </p>
+  </div>
+  <div class="wrap">
+    <div class="numbers">
+      <div class="num"><div class="v red">60.7M</div><div class="k">Views · top 3 videos</div></div>
+      <div class="num"><div class="v">115.7K</div><div class="k">TikTok followers</div></div>
+      <div class="num"><div class="v">2.5M</div><div class="k">Total likes</div></div>
+      <div class="num"><div class="v">90</div><div class="k">Backstage features</div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="mono label">01 — Proof</div>
+    <h2 class="display">What the numbers look like</h2>
+    <div class="work">
+      <div class="row">
+        <div><span class="t">Suliano vs Fiziev</span><span class="m">TikTok · behind the scenes</span></div>
+        <div class="n">26.8M</div>
+      </div>
+      <div class="row">
+        <div><span class="t">Khamzat Chimaev</span><span class="m">TikTok · behind the scenes</span></div>
+        <div class="n">23.7M</div>
+      </div>
+      <div class="row">
+        <div><span class="t">Petr Yan arrives in Thailand</span><span class="m">TikTok · fight camp</span></div>
+        <div class="n">10.2M</div>
+      </div>
+      <div class="row">
+        <div><span class="t">Petr Yan &amp; Rafael Fiziev at Tiger Muay Thai</span><span class="m">TikTok · English caption</span></div>
+        <div class="n">626K</div>
+      </div>
+      <div class="row">
+        <div><span class="t">Bellator 269 Moscow — Fedor vs Johnson</span><span class="m">YouTube · full backstage series</span></div>
+        <div class="n">Series</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="mono label">02 — Access</div>
+    <h2 class="display">Rooms most editors never enter</h2>
+    <p class="stack">Filmed backstage, at weigh-ins, in camp and in the corridors — not sourced from broadcast feeds.</p>
+    <div class="chips">
+      <span class="chip">Petr Yan</span>
+      <span class="chip">Khamzat Chimaev</span>
+      <span class="chip">Rafael Fiziev</span>
+      <span class="chip">Fedor Emelianenko</span>
+      <span class="chip">Herb Dean</span>
+      <span class="chip">Tiger Muay Thai · Thailand</span>
+      <span class="chip">Bellator 269</span>
+      <span class="chip">ACA 99</span>
+      <span class="chip">EFC — Khabib's league</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="mono label">03 — What I deliver</div>
+    <h2 class="display">Three things, fast</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="lead">Within 6 hours of an event</span>
+        <h3>Short-form volume</h3>
+        <p>5–10 vertical cuts formatted per platform — TikTok, Reels, Shorts, Douyin, Video Accounts. Hook in the first second, built from how the fight actually felt.</p>
+      </div>
+      <div class="card">
+        <span class="lead">Within 24 hours</span>
+        <h3>Three-language versioning</h3>
+        <p>One piece delivered in English, Russian and Chinese — voice, subtitles and pacing recut per market. Not subtitle overlays on the same edit.</p>
+      </div>
+      <div class="card">
+        <span class="lead">Ongoing</span>
+        <h3>Backstage features</h3>
+        <p>Fight-week narrative: arrivals, camp, weigh-in, corridor, walkout. The content that builds fighters into characters between events.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="mono label">04 — Languages</div>
+    <h2 class="display">Why three languages matter here</h2>
+    <div class="langs">
+      <div class="lang"><div class="code">EN</div><div class="desc">Fluent. Working language for briefs, scripts and delivery.</div></div>
+      <div class="lang"><div class="code">RU</div><div class="desc">Native. A large share of the UFC roster is from the CIS — that audience is under-served.</div></div>
+      <div class="lang"><div class="code">中文</div><div class="desc">Conversational. Enough to work with Chinese platforms and partners.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="mono label">05 — Stack</div>
+    <h2 class="display">Pipeline</h2>
+    <p class="stack">
+      <strong>Edit &amp; finish:</strong> Adobe Premiere Pro, After Effects, DaVinci Resolve.
+      <br><strong>AI production:</strong> Runway for generative and cleanup passes, ElevenLabs for multilingual voice and dubbing, Midjourney for key art and thumbnails.
+      <br><strong>Why it matters:</strong> the AI layer is what makes 24-hour three-language turnaround possible at one-person cost instead of three-team cost.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mono label">06 — Contact</div>
+    <h2 class="display">Send me one clip.<br>I'll send back three languages.</h2>
+    <p class="sub" style="margin-top:1.2rem">
+      Free test: give me footage from any event you've already aired. One three-language cut back within 48 hours. Judge from that.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:i@dbozhko.ru">Email</a>
+      <a class="btn" href="https://www.tiktok.com/@zakulisie_sporta" target="_blank" rel="noopener noreferrer">TikTok — 115.7K</a>
+      <a class="btn" href="https://www.youtube.com/channel/UCUrar3oQ5MnxD5YFrXFyPZg" target="_blank" rel="noopener noreferrer">YouTube archive</a>
+    </div>
+    <p class="fine">
+      Figures are public account metrics at the time of publication. Retention and audience-geography breakdowns available on request.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
