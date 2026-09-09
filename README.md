@@ -1,62 +1,53 @@
-# MMA Career Kit — Combat Sports Content Producer
+# MMA Media Jobs Watch
 
-Materials for landing contract or staff work in combat-sports media: UFC / TKO, ONE Championship,
-Migu (China Mobile), PFL, KSW.
+A weekly job-scouting agent for combat-sports media work, plus the portfolio it supports.
 
-Built and maintained by the **MMA Media Jobs Watch** agent (see [`agent/`](agent/)).
+## The agent
 
----
+[`agent/`](agent/) contains a portable, self-contained agent that checks a fixed list of
+combat-sports employers — UFC / TKO, ONE Championship, PFL, KSW, Migu — and reports only vacancies
+that have not appeared in a previous report. Drop `SKILL.md` into a skills directory, or paste
+`system-prompt.md` into any agent runtime.
 
-## What's here
+Three rules do most of the work:
 
-| Path | What it is |
-|---|---|
-| `portfolio/index.html` | One-page English portfolio. Leads with real numbers: 60.7M views on top three videos, 115.7K followers, 2.5M likes. Open in a browser or host on GitHub Pages. |
-| `outreach/` | Cold-email templates for UFC Originals, ONE Championship and Migu. Written to be sent to producers, not to HR. |
-| `resume/` | Positioning-corrected CV in English and Chinese. Title is **Content Producer**, not Video Editor. |
-| `research/market-2026.md` | Salaries and cost of living in USD for Shanghai, Singapore and Las Vegas, with sources. |
-| `research/targets.md` | Company structures, named decision-makers, and the actual entry points for each target. |
-| `agent/` | The job-watch agent itself — system prompt, source list, report format. Reusable. |
+1. **Report deltas, not state.** Re-listing the same jobs every week teaches the reader to skip the
+   report.
+2. **Refuse to pad.** "Nothing new this week" is a valid answer. An agent that manufactures findings
+   to look busy is worse than no agent.
+3. **Every claim carries a link.** No listing exists until there is a URL and a date.
 
----
+### Technique notes worth stealing
 
-## The core positioning decision
+- **Workday portals** expose a JSON API at `/wday/cxs/<tenant>/<board>/jobs` (POST) and
+  `/wday/cxs/<tenant>/<board>/job/<path>` (GET). Server-side curl is usually blocked; run `fetch()`
+  from inside a browser session on the same origin and it works.
+- **LinkedIn** blocks scraping but leaves a guest endpoint open:
+  `/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=&location=&start=`. Returns parseable
+  HTML cards with title, company, location, posted date and URL. Add `&f_TPR=r1209600` for the last
+  14 days.
+- Try clean-content extraction on public listing pages before spending a browser session. Escalate
+  only when a page returns empty or a JavaScript shell.
 
-The asset is **not** editing skill. Editing is commodity.
+See [`agent/sources.md`](agent/sources.md) for the source list with live/broken status.
 
-The asset is **backstage access to real fighters plus proof it goes viral at scale**:
-Petr Yan, Khamzat Chimaev, Rafael Fiziev, Fedor Emelianenko, Tiger Muay Thai, Bellator 269, ACA, EFC.
-That combination is what UFC Originals, ONE and Migu cannot hire locally.
+## The portfolio
 
-Every document here leads with that, in this order:
+[`portfolio/index.html`](portfolio/index.html) — a single self-contained page for
+**@zakulisie_sporta**, a backstage combat-sports channel: 115.7K followers, 2.5M likes, and 60.7M
+views across its top three videos on UFC athletes. Backstage coverage of Petr Yan, Khamzat Chimaev,
+Rafael Fiziev, Fedor Emelianenko, Bellator 269, ACA and EFC.
 
-1. Viral numbers (26.8M / 23.7M / 10.2M)
-2. Backstage access and named athletes
-3. EN / RU / ZH — three-language delivery
-4. AI pipeline as the reason 24-hour turnaround is possible
-5. Only then: tools and employment history
+No build step, no dependencies. Open it in a browser or serve it from GitHub Pages.
 
----
+## Market data
 
-## Known fixes still owed (do these before sending anything)
+[`research/market-2026.md`](research/market-2026.md) — September 2026 salary and cost-of-living
+figures in USD for combat-sports media roles in Shanghai, Singapore and Las Vegas, with the FX rates
+and sources used. Includes what separates a 10–15K CNY editor role from a 20–30K 编导 role in
+Shanghai, and the H-1B sponsorship record for UFC's operating entity.
 
-- [ ] **TikTok bio.** Currently reads "I teach chess and English to children online." Kills the pitch instantly. Replace with a combat-sports line.
-- [ ] **Account is cold.** Recent posts get 184–800 views against millions on the archive. Either revive with 3–4 weeks of consistent posting, or link directly to the viral videos rather than to the profile.
-- [ ] **English versions.** Captions are Russian-only. The one English-captioned video did 626K — proof the format travels. Ship 5–10 English versions of the best clips.
-- [ ] **Pull analytics.** 30/90-day views, retention, audience geography. Geography decides which pitch to lead with: Western audience → ONE and UFC; Russian-speaking audience → Migu's untapped CIS segment.
+## CV
 
----
-
-## Numbers of record
-
-| Metric | Value | Source |
-|---|---|---|
-| TikTok followers | 115.7K | `@zakulisie_sporta` |
-| Total likes | 2.5M | same |
-| Top video | 26.8M views | Suliano vs Fiziev |
-| Second | 23.7M views | Khamzat Chimaev |
-| Third | 10.2M views | Petr Yan in Thailand |
-| English-captioned test | 626.7K views | Yan & Fiziev, Tiger Muay Thai |
-| YouTube | 6.24K subs, 90 videos | backstage archive: Bellator 269, ACA 99, EFC |
-
-Verified from public profile data. Retention and geography require account-owner analytics.
+[`resume/`](resume/) — English and Chinese versions. The Chinese one is written for the market, not
+translated from the English.
